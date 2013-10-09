@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+cd ~/
+for i in `lsof ~/samba/* | awk '{print $2}' | sed '1d' | sort -nr`
+do 
+  kill -9 $i
+done
+umount ~/samba/share
+umount ~/samba/felix
+exit

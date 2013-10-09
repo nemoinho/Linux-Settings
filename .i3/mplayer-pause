@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+MPLAYER_FIFO=~/.mplayer_fifo
+if [ ! -p $MPLAYER_FIFO ]; then exit; fi
+echo "pause" > $MPLAYER_FIFO

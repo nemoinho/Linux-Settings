@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+DIRECTION=$1
+MPLAYER_FIFO=~/.mplayer_fifo
+if [ ! -p $MPLAYER_FIFO ]; then exit; fi
+echo "volume $DIRECTION" > $MPLAYER_FIFO
