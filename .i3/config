@@ -394,6 +394,7 @@ for_window [class="libreoffice"]        move workspace $w04
 for_window [class="^Gimp"]              move workspace $w07
 for_window [window_role="gimp-toolbox"] floating disable; move left
 for_window [window_role="gimp-dock"]    floating disable
+for_window [title="Project"]            floating disable; move workspace $w02
 
 bindsym $mod+Control+0 exec --no-startup-id phpstorm
 bindsym $mod+Control+1 exec --no-startup-id ~/.i3/browser
