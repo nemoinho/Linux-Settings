@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+if [ "`which iceweasel`" != "" ]; then
+	iceweasel
+else if [ "`which firefox`" != "" ]; then
+		firefox
+	else
+		chromium
+	fi
+fi
