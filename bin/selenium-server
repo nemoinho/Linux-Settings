@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+java -jar ~/opt/selenium-server-standalone-2.35.0/selenium-server-standalone-2.35.0.jar
