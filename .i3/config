@@ -114,7 +114,9 @@ set $lock $(i3lock -d -i /usr/share/backgrounds/gnome/life-corn-field-nature-800
 # finds out, if available)
 bar {
         status_command i3status
-} 
+}
+
+set $browser iceweasel
 
 #|============================================================================
 #| 3_workspaces
@@ -138,6 +140,7 @@ set $w12 12:
 
 # Common apps are sorted by workspace
 assign [class="^Iceweasel"]   $w01
+assign [class="^Firefox"]     $w01
 assign [class="^Chromium"]    $w01
 assign [title="^mutt"]        $w02
 assign [class="Evolution"]    $w02
@@ -150,13 +153,14 @@ assign [class="^libreoffice"] $w04
 assign [class="^Gimp"]        $w07
 
 # These windows require a specific rule to be displayed in floating mode:
-for_window [window_role="^About"]      floating enable
-for_window [instance="^Update"]        floating enable
-for_window [instance="^gcalctool"]     floating enable
-for_window [instance="^gnome-keyring"] floating enable
-for_window [instance="^file_progress"] floating enable
-for_window [title="^Compression"]      floating enable
-for_window [title="^Downloads"]      floating enable
+for_window [window_role="^About"]             floating enable
+for_window [instance="^Update"]               floating enable
+for_window [instance="^gcalctool"]            floating enable
+for_window [instance="^gnome-keyring"]        floating enable
+for_window [instance="^file_progress"]        floating enable
+for_window [title="^Compression"]             floating enable
+for_window [title="^Downloads"]               floating enable
+for_window [title="^Selenium Remote Control"] floating enable
 
 #|============================================================================
 #| 4_keybindings
@@ -278,9 +282,11 @@ mode "resize" {
 
 # 4_6_workspace_navigation
 # ----------------------------------------------------------------------------
-# Previous/Next Workspace                                          ($mod+[ui])
+# Previous/Next Workspace                                  ($mod[+Shift]+[ui])
 bind $mod+30 workspace prev
 bind $mod+31 workspace next
+bind $mod+Shift+30 exec i3-msg move workspace to output left
+bind $mod+Shift+31 exec i3-msg move workspace to output right
 
 # Back to last workspace                                              ($mod+')
 bind $mod+48 workspace back_and_forth
@@ -374,19 +380,15 @@ bindsym $mod+Print exec ~/.i3/screenshot.sh active
 # Mountpoints
 exec --no-startup-id ~/samba/.mountshares
 
-# Extra workspacebindings
-#bind $mod+25 workspace $w01
-#bind $mod+Shift+25 move container to workspace $w01
-#bind $mod+54 workspace $w04
-#bind $mod+Shift+54 move container to workspace $w04
-#bind $mod+53 workspace $w03
-#bind $mod+Shift+53 move container to workspace $w03
+# WLAN-Management
+exec --no-startup-id nm-applet
 
-
+for_window [class="^Firefox"]           move workspace $w01
 for_window [class="^Iceweasel"]         move workspace $w01
 for_window [title="^mutt"]              move workspace $w02
 for_window [class="Evolution"]          move workspace $w02
 for_window [title="^ranger"]            move workspace $w03
+for_window [class="^jetbrains"]         move workspace $w03
 for_window [title="^weechat"]           move workspace $w05
 for_window [class="^Pidgin"]            move workspace $w05
 for_window [title="LibreOffice"]        move workspace $w04
@@ -395,13 +397,12 @@ for_window [class="^Gimp"]              move workspace $w07
 for_window [window_role="gimp-toolbox"] floating disable; move left
 for_window [window_role="gimp-dock"]    floating disable
 
-bindsym $mod+Control+1 exec --no-startup-id iceweasel
-#bindsym $mod+Control+2 exec --no-startup-id gnome-terminal --title="mutt" -e mutt
+bindsym $mod+Control+1 exec --no-startup-id $browser
 bindsym $mod+Control+2 exec --no-startup-id evolution
 bindsym $mod+Control+3 exec --no-startup-id gnome-terminal --title="ranger" -e ranger
 bindsym $mod+Control+4 exec --no-startup-id libreoffice
-#bindsym $mod+Control+5 exec --no-startup-id gnome-terminal --title="weechat" -e weechat-curses
 bindsym $mod+Control+5 exec --no-startup-id pidgin
 bindsym $mod+Control+7 exec --no-startup-id gimp
 
 bindsym $mod+Control+v exec --no-startup-id gnome-terminal --title="vim" -e vim
+bindsym $mod+Control+h exec --no-startup-id gnome-terminal --title="htop" -e htop
