@@ -18,6 +18,8 @@ set number
 set nowrap
 set tabstop=4
 set shiftwidth=4
+set colorcolumn=80
+set background=dark
 
 " Show non-visible chars
 set listchars=tab:→\ ,trail:·,eol:$,nbsp:_,extends:»,precedes:«

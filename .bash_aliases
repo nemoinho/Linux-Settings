@@ -8,3 +8,4 @@ alias cal='ncal -C'
 alias dg='git diff --color'
 alias gitdiff='dg'
 alias lg="git log --graph --all --color --format='%C(yellow)%h %C(bold red)%d %Creset%s %Cgreen(%cr) %C(bold blue)<%an>'"
+alias pwgen='cat /dev/urandom | tr -cd [:alnum:] | head -c 15; echo ""'
