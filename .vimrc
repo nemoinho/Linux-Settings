@@ -16,6 +16,7 @@ syntax on
 set nocompatible
 set number
 set nowrap
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set colorcolumn=80
@@ -24,6 +25,12 @@ set background=dark
 " Show non-visible chars
 set listchars=tab:→\ ,trail:·,eol:$,nbsp:_,extends:»,precedes:«
 set list
+
+" search in all parent-folders for an tags file
+set tags=tags;/
+" recreate ctags on each save-prozess
+" TODO
+" au BufWritePost,FileAppendPost,FileWritePost *.php !~/bin/recreate_ctags
 
 " Navigation
 nnoremap <C-n>     :tabnew  <CR>
