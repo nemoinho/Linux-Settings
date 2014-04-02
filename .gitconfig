@@ -1,0 +1,9 @@
+[core]
+	editor = vim
+	excludesfile = ~/.gitlocalignore
+[merge]
+	tool = meld
+[alias]
+	co = checkout
+	last = log -7 --color --graph HEAD
+	lg = log --graph --all --format='%C(yellow)%h %C(bold red)%d %Creset%s %Cgreen(%cr) %C(bold blue)<%an>'
