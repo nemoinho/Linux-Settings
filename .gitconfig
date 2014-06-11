@@ -3,6 +3,8 @@
 	excludesfile = ~/.gitlocalignore
 [merge]
 	tool = meld
+[credential]
+	helper = cache --timeout=3600
 [alias]
 	co = checkout
 	last = log -7 --color --graph HEAD
