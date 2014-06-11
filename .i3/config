@@ -123,8 +123,8 @@ bar {
 # Workspace names:
 # the default modifier being Super_L, workspaces 6 to 12 are preferred
 # (=> left thumb + right hand to select a workspace)
-set $w01 1:start
-set $w02 2:www
+set $w01 1:www
+set $w02 2:mail
 set $w03 3:work
 set $w04 4:office
 set $w05 5:im
@@ -137,11 +137,11 @@ set $w11 11:
 set $w12 12:
 
 # Common apps are sorted by workspace
-assign [title="^mutt"]        $w01
-assign [class="Evolution"]    $w01
-assign [class="^Iceweasel"]   $w02
-assign [class="^Firefox"]     $w02
-assign [class="^Chromium"]    $w02
+assign [class="^Iceweasel"]   $w01
+assign [class="^Firefox"]     $w01
+assign [class="^Chromium"]    $w01
+assign [title="^mutt"]        $w02
+assign [class="Evolution"]    $w02
 assign [title="^ranger"]      $w03
 assign [class="^Skype"]       $w05
 assign [class="^Pidgin"]      $w05
@@ -280,7 +280,7 @@ mode "resize" {
 
 # 4_6_workspace_navigation
 # ----------------------------------------------------------------------------
-# Previous/Next Workspace                                  ($mod[+Shift]+[ui])
+# Previous/Next Workspace (movements too)                  ($mod[+Shift]+[ui])
 bind $mod+30 workspace prev
 bind $mod+31 workspace next
 bind $mod+Shift+30 exec i3-msg move workspace to output left
@@ -378,13 +378,13 @@ bindsym $mod+Print exec ~/.i3/screenshot.sh active
 # Mountpoints
 exec --no-startup-id ~/samba/.mountshares
 
-# WLAN-Management
+# LAN-Management
 exec --no-startup-id nm-applet
 
-for_window [title="^mutt"]              move workspace $w01
-for_window [class="Evolution"]          move workspace $w01
-for_window [class="^Firefox"]           move workspace $w02
-for_window [class="^Iceweasel"]         move workspace $w02
+for_window [class="^Firefox"]           move workspace $w01
+for_window [class="^Iceweasel"]         move workspace $w01
+for_window [title="^mutt"]              move workspace $w02
+for_window [class="Evolution"]          move workspace $w02
 for_window [title="^ranger"]            move workspace $w03
 for_window [class="^jetbrains"]         move workspace $w03
 for_window [title="^weechat"]           move workspace $w05
@@ -405,4 +405,4 @@ bindsym $mod+Control+5 exec --no-startup-id pidgin
 bindsym $mod+Control+7 exec --no-startup-id gimp
 
 bindsym $mod+Control+v exec --no-startup-id gnome-terminal --title="vim" -e vim
-bindsym $mod+Control+h exec --no-startup-id gnome-terminal --title="htop" -e htop
+bindsym $mod+Control+m exec --no-startup-id gnome-terminal --title="htop" -e htop
