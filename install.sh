@@ -16,7 +16,7 @@ mkdir -p $SETTINGSDIR
 
 cd $OPTDIR
 
-#git clone https://github.com/nemoinho/Linux-Settings.git $SETTINGSDIR
+git clone https://github.com/nemoinho/Linux-Settings.git $SETTINGSDIR
 
 cd $SETTINGSDIR
 
