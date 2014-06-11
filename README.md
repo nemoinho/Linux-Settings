@@ -13,6 +13,7 @@ this to all under the Beerware-license.
 Installation
 ------------
 To install these settings run this command
+
 wget -O- https://raw.githubusercontent.com/nemoinho/Linux-Settings/master/install.sh | bash
 
 git is required for this!
