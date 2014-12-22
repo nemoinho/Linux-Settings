@@ -20,7 +20,7 @@ git is required for this!
 
 License
 -------
-THE BEER-WARE LICENSE" (Revision 42):
+THE BEER-WARE LICENSE (Revision 42):
 
 Felix Nehrke wrote this file. As long as you retain this notice you can do
 whatever you want with this stuff. If we meet some day, and you think this
