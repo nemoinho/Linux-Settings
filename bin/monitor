@@ -1,50 +1,65 @@
 #!/usr/bin/env sh
 INTERN="LVDS1"
+INTERN="eDP1"
 EXTERN1="HDMI2"
+EXTERN1="DP2"
 EXTERN2="HDMI3"
+EXTERN2="DP_"
 MAXRES=`xrandr --query | awk '/^ *[0-9]*x[0-9]*/{ print $1 }' | sort | uniq -d | cut -d'x' -f 1 | sort -nr | head -1`
 CHOOSEN_RES=`xrandr --query | grep $MAXRES | awk '/^ *[0-9]*x[0-9]*/{ print $1 }' | sort | uniq -d`
 
 PrintUsage(){
 cat << EOI
 Usage:
- bildschirm < modes | intern | extern | clone | extend >
+ monitor < modes | intern | extern | clone | extend | extendl | work | workl | help >
 
-Optionen:
-  modes    Moegliche Modes ausgeben
-  intern   Nur internen Bildschirm verwenden
-  extern   Nur externer Bildschirm verwenden
-  clone    Gleiche Ausgabe auf beiden Bildschirmen
-  extend   Bild auf externem Bildschirm erweitern
-  work     Einstellung für 2 Monitore am Arbeitsplatz
+Options:
+  modes    Shows available xrands modes
+  intern   Use only the intern monitor
+  extern   use only the extern monitor
+  clone    Clone monitors
+  extend   Extend the monitor from intern to extern
+  extendl  Extend the monitor from intern to extern on the left
+  work     Special setting for work-place with two monitors (one in portrait-mode)
+  workl    Special setting for work-place with two monitors on a buggy lenovo-dockingstation
+  help     Shows this help
 
 EOI
 }
 
 
 case $1 in
-  modes)
+modes)
     xrandr -q
     ;;
-  intern)
+intern)
     xrandr --output $INTERN --auto --output $EXTERN1 --off --output $EXTERN2 --off
     ;;
-  extern)
+extern)
     xrandr --output $INTERN --off --output $EXTERN1 --auto
     ;;
-  clone)
+clone)
     CLONERES=`xrandr --query | awk '/^ *[0-9]*x[0-9]*/{ print $1 }' | sort | uniq -d | head -1`
     xrandr --output $INTERN --mode $CHOOSEN_RES --output $EXTERN1 --same-as $CHOOSEN_RES --mode $CHOOSEN_RES
     ;;
-  extend)
+extend)
     xrandr --output $INTERN --auto --output $EXTERN1 --auto --right-of $INTERN
     ;;
-  work)
-    xrandr --output HDMI3 --auto --rotate left --output HDMI2 --auto --left-of HDMI3 --output LVDS1 --auto --left-of HDMI2
-    i3-msg move "2:www" to HDMI2
-    i3-msg move "3:work" to HDMI3
+extendl)
+    xrandr --output $INTERN --auto --output $EXTERN1 --auto --left-of $INTERN
     ;;
-  *)
+work)
+    xrandr --output $EXTERN2 --auto --rotate left --output $EXTERN1 --auto --left-of $EXTERN2 --output $INTERN --auto --left-of $EXTERN1
+    i3-msg move "1:www" to $EXTERN1
+    i3-msg move "3:work" to $EXTERN2
+    ;;
+workl)
+    xrandr --output $EXTERN1 --mode 3840x1080 --output $INTERN --auto --right-of $EXTERN1
+    i3-msg move "1:www" to HDMI2
+    i3-msg move "3:work" to HDMI3
+    i3-msg move "4:office" to HDMI3
+    ;;
+*)
     PrintUsage
     ;;
 esac
