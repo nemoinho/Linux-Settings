@@ -136,20 +136,6 @@ set $w10 10:
 set $w11 11:
 set $w12 12:
 
-# Common apps are sorted by workspace
-assign [class="^Iceweasel"]   $w01
-assign [class="^Firefox"]     $w01
-assign [class="^Chromium"]    $w01
-assign [title="^mutt"]        $w02
-assign [class="Evolution"]    $w02
-assign [title="^ranger"]      $w03
-assign [class="^Skype"]       $w05
-assign [class="^Pidgin"]      $w05
-assign [title="^weechat"]     $w05
-assign [class="VirtualBox"]   $w06
-assign [class="^libreoffice"] $w04
-assign [class="^Gimp"]        $w07
-
 # These windows require a specific rule to be displayed in floating mode:
 for_window [window_role="^About"]             floating enable
 for_window [instance="^Update"]               floating enable
@@ -380,21 +366,6 @@ exec --no-startup-id ~/samba/.mountshares
 
 # LAN-Management
 exec --no-startup-id nm-applet
-
-for_window [class="^Firefox"]           move workspace $w01
-for_window [class="^Iceweasel"]         move workspace $w01
-for_window [title="^mutt"]              move workspace $w02
-for_window [class="Evolution"]          move workspace $w02
-for_window [title="^ranger"]            move workspace $w03
-for_window [class="^jetbrains"]         move workspace $w03
-for_window [title="^weechat"]           move workspace $w05
-for_window [class="^Pidgin"]            move workspace $w05
-for_window [title="LibreOffice"]        move workspace $w04
-for_window [class="libreoffice"]        move workspace $w04
-for_window [class="^Gimp"]              move workspace $w07
-for_window [window_role="gimp-toolbox"] floating disable; move left
-for_window [window_role="gimp-dock"]    floating disable
-for_window [title="Project"]            floating disable; move workspace $w02
 
 bindsym $mod+Control+0 exec --no-startup-id phpstorm
 bindsym $mod+Control+1 exec --no-startup-id ~/.i3/browser
