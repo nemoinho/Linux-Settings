@@ -103,7 +103,8 @@ set $terminal i3-sensible-terminal
 
 # define your preferred application launcher
 # set $launcher dmenu_run
-set $launcher $(dmenu_path | sort -u | dmenu -fn '-*-fixed-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#1793d1')
+#set $launcher $(dmenu_path | sort -u | dmenu -fn '-*-fixed-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#1793d1')
+set $launcher dmenu_run -fn '-*-fixed-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#1793d1'
 # set $launcher i3-dmenu-desktop
 
 # define your preferred screen lock
