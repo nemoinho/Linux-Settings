@@ -50,14 +50,14 @@ extendl)
     ;;
 work)
     xrandr --output $EXTERN2 --auto --rotate left --output $EXTERN1 --auto --left-of $EXTERN2 --output $INTERN --auto --left-of $EXTERN1
-    i3-msg move "1:www" to $EXTERN1
-    i3-msg move "3:work" to $EXTERN2
+    i3-msg move "1" to $EXTERN1
+    i3-msg move "3" to $EXTERN2
     ;;
 workl)
     xrandr --output $EXTERN1 --mode 3840x1080 --output $INTERN --auto --right-of $EXTERN1
-    i3-msg move "1:www" to HDMI2
-    i3-msg move "3:work" to HDMI3
-    i3-msg move "4:office" to HDMI3
+    i3-msg move "1" to $EXTERN1
+    i3-msg move "3" to $EXTERN1
+    i3-msg move "4" to $EXTERN1
     ;;
 *)
     PrintUsage

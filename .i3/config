@@ -123,18 +123,18 @@ bar {
 # Workspace names:
 # the default modifier being Super_L, workspaces 6 to 12 are preferred
 # (=> left thumb + right hand to select a workspace)
-set $w01 1:www
-set $w02 2:mail
-set $w03 3:work
-set $w04 4:office
-set $w05 5:im
-set $w06 6:vm
-set $w07 7:gimp
-set $w08 8:test
-set $w09 9:
-set $w10 10:
-set $w11 11:
-set $w12 12:
+set $w01 1
+set $w02 2
+set $w03 3
+set $w04 4
+set $w05 5
+set $w06 6
+set $w07 7
+set $w08 8
+set $w09 9
+set $w10 10
+set $w11 11
+set $w12 12
 
 # These windows require a specific rule to be displayed in floating mode:
 for_window [window_role="^About"]             floating enable
