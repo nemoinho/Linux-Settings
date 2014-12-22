@@ -80,3 +80,10 @@ map <F7> :call ChangeSpellLang()<CR>
 hi SpellBad ctermbg=52 ctermfg=9
 " limit offers to 8
 set spellsuggest=8
+
+" searching
+" highlight search results
+set hls
+" search case-sensivite only if there are upper-chars in search or it ends by
+" \C
+set smartcase
