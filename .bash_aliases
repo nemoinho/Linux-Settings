@@ -14,3 +14,9 @@ alias lg="git log --graph --all --color --format='%C(yellow)%h %C(bold red)%d %C
 
 # create random passwords of 15 chars length
 alias pwgen='cat /dev/urandom | tr -cd [:alnum:] | head -c 15; echo ""'
+
+
+# load environment specific aliases
+if [ -f ~/.bash_aliases.local ]; then
+    . ~/.bash_aliases.local
+fi
