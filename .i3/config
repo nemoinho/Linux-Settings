@@ -324,12 +324,12 @@ bind $mod+Shift+24 kill
 #|============================================================================
 
 # Soundbindings                                         ([$mod,FN]+[F3,F4,F5])
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
-bindsym XF86AudioMute        exec amixer -q set Master toggle
-bind $mod+70 exec amixer -q set Master 5%- unmute
-bind $mod+71 exec amixer -q set Master 5%+ unmute
-bind $mod+69 exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -c 1 -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -c 1 -q set Master 5%- unmute
+bindsym XF86AudioMute        exec amixer -c 1 -q set Master toggle
+bind $mod+70 exec amixer -c 1 -q set Master 5%- unmute
+bind $mod+71 exec amixer -c 1 -q set Master 5%+ unmute
+bind $mod+69 exec amixer -c 1 -q set Master toggle
 
 # Monitorbrightness                                             ($mod+[F8,F9])
 bind $mod+74 exec xbacklight -set 0
