@@ -344,7 +344,8 @@ bind $mod+Shift+96 exec ~/.i3/pm-suspend
 bind $mod+Shift+9 exec ~/.i3/shutdown
 
 # Lock                                                            (Strg+Alt+l)
-bindsym Mod1+Control+l exec $lock
+#bindsym Mod1+Control+l exec $lock
+bindsym $mod+Shift+Control+l exec $lock
 
 # mplayer config                               ($mod+[Shift]+[F3,F4,F5,F6,F7])
 bind $mod+72 exec ~/.i3/mplayer-title -
