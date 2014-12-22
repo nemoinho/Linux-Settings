@@ -12,6 +12,16 @@ HOMEDIR=$(pwd)
 SETTINGSDIR=$HOMEDIR'/opt/Linux-Settings'
 OPTDIR=$(dirname $SETTINGSDIR)
 
+# Only update if the settings already exists
+if [ -f $SETTINGSDIR/install.sh ]; then
+    cd $SETTINGSDIR
+    git pull
+    if [ -f update.sh ]; then
+        ./update.sh
+    fi
+    exit;
+fi
+
 mkdir -p $SETTINGSDIR
 
 cd $OPTDIR
@@ -20,7 +30,15 @@ git clone https://github.com/nemoinho/Linux-Settings.git $SETTINGSDIR
 
 cd $SETTINGSDIR
 
+if [ -d save ]; then
+    mv save old_save
+fi
+
 mkdir -p save
+
+if [ -d old_save ]; then
+    mv old_save save
+fi
 
 # 1. ~/bin
 # save previous settings for bin
@@ -45,19 +63,22 @@ done
 
 # 2. ~/.bashrc
 if [ -f ~/.bashrc ]; then
-    mv ~/.bashrc save
+    cp ~/.bashrc save
+    rm ~/.bashrc
 fi
-cp .bashrc ~/
+ln -s ${SETTINGSDIR}/.bashrc ${HOMEDIR}/.bashrc
 
 if [ -f ~/.bash_os ]; then
-    mv ~/.bash_os save
+    cp ~/.bash_os save
+    rm ~/.bash_os
 fi
-cp .bash_os ~/
+ln -s ${SETTINGSDIR}/.bash_os ${HOMEDIR}/.bash_os
 
 if [ -f ~/.bash_aliases ]; then
-    mv ~/.bash_aliases save
+    cp ~/.bash_aliases save
+    rm ~/.bash_aliases
 fi
-cp .bash_aliases ~/
+ln -s ${SETTINGSDIR}/.bash_aliases ${HOMEDIR}/.bash_aliases
 
 # 3. ~/.i3
 # save previous settings for .i3
@@ -77,7 +98,7 @@ find .i3 -type f | while read file; do
     if [ -f ~/$file ]; then
         rm ~/$file
     fi
-    ln $file ~/$file
+    ln -s $SETTINGSDIR/$file ~/$file
 done
 
 # 4. ~/.vimrc and ~/.vim
@@ -98,21 +119,24 @@ find .vim -type f | while read file; do
     if [ -f ~/$file ]; then
         rm ~/$file
     fi
-    ln $file ~/$file
+    ln -s $SETTINGSDIR/$file ~/$file
 done
 
 if [ -f ~/.vimrc ]; then
-    mv ~/.vimrc save
+    cp ~/.vimrc save
+    rm ~/.vimrc
 fi
-cp .vimrc ~/
+ln -s ${SETTINGSDIR}/.vimrc ${HOMEDIR}/.vimrc
 
 # 5. ~/.gitconfig
 if [ -f ~/.gitconfig ]; then
-    mv ~/.gitconfig save
+    cp ~/.gitconfig save
+    rm ~/.gitconfig
 fi
-cp .gitconfig ~/
+ln -s ${SETTINGSDIR}/.gitconfig ${HOMEDIR}/.gitconfig
 
 if [ -f ~/.gitlocalignore ]; then
-    mv ~/.gitlocalignore save
+    cp ~/.gitlocalignore save
+    rm ~/.gitlocalignore
 fi
-ln .gitlocalignore ~/.gitlocalignore
+ln -s ${SETTINGSDIR}/.gitlocalignore ${HOMEDIR}/.gitlocalignore
