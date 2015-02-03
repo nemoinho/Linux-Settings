@@ -379,3 +379,4 @@ bindsym $mod+Control+7 exec --no-startup-id gimp
 
 bindsym $mod+Control+v exec --no-startup-id gnome-terminal --title="vim" -e vim
 bindsym $mod+Control+m exec --no-startup-id gnome-terminal --title="htop" -e htop
+bindsym $mod+Control+a exec --no-startup-id gnome-terminal --title="alsamixer" -e alsamixer
