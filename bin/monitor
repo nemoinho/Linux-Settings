@@ -1,10 +1,8 @@
 #!/usr/bin/env sh
 INTERN="LVDS1"
 INTERN="eDP1"
-EXTERN1="HDMI2"
 EXTERN1="DP2"
-EXTERN2="HDMI3"
-EXTERN2="DP_"
+EXTERN2="DP1"
 MAXRES=`xrandr --query | awk '/^ *[0-9]*x[0-9]*/{ print $1 }' | sort | uniq -d | cut -d'x' -f 1 | sort -nr | head -1`
 CHOOSEN_RES=`xrandr --query | grep $MAXRES | awk '/^ *[0-9]*x[0-9]*/{ print $1 }' | sort | uniq -d`
 
