@@ -8,9 +8,21 @@ alias cal='ncal -C'
 
 # git shortcuts
 alias st='git status'
+alias co='git checkout'
+alias branch='git branch'
+alias branchr='git branch --remote'
+alias remote='git branch --remote'
+alias com='git commit'
+alias commit='git commit'
+alias add='git add'
+alias del='git remove'
+alias push='git push'
+alias fetch='git fetch'
+alias merge='git merge'
+alias pull='git pull'
 alias dg='git diff --color'
 alias gitdiff='dg'
-alias lg="git log --graph --all --color --format='%C(yellow)%h %C(bold red)%d %Creset%s %Cgreen(%cr) %C(bold blue)<%an>'"
+alias lg="git lg"
 
 # create random passwords of 15 chars length
 alias pwgen='cat /dev/urandom | tr -cd [:alnum:] | head -c 15; echo ""'
