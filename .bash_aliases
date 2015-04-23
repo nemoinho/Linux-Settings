@@ -25,7 +25,7 @@ alias gitdiff='dg'
 alias lg="git lg"
 
 # create random passwords of 15 chars length
-alias pwgen='cat /dev/urandom | tr -cd [:alnum:] | head -c 15; echo ""'
+alias pwgen='cat /dev/urandom | tr -cd "[:alnum:]" | head -c 15; echo ""'
 
 
 # load environment specific aliases
