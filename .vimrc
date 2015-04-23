@@ -87,3 +87,6 @@ set hls
 " search case-sensivite only if there are upper-chars in search or it ends by
 " \C
 set smartcase
+
+" reset the colorcolumn to 72 in gitcommits
+au FileType gitcommit set colorcolumn=72
