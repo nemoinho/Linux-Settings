@@ -90,3 +90,7 @@ set smartcase
 
 " reset the colorcolumn to 72 in gitcommits
 au FileType gitcommit set colorcolumn=72
+
+" copy selected rows or whole file into clipboard with Ctrl+C
+nnoremap <C-C> :w !xsel -b<CR><CR>
+vnoremap <C-C> :w !xsel -b<CR><CR>
