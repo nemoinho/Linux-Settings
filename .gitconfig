@@ -8,7 +8,7 @@
 [alias]
 	co = checkout
 	last = log -7 --color --graph HEAD
-	lg = log --graph --all --format='%C(yellow)%h %C(bold red)%d %Creset%s %Cgreen(%cr) %C(bold blue)<%an>'
+	lg = log --graph --all --date-order --format='%C(yellow)%h %C(bold red)%d %Creset%s %Cgreen(%cr) %C(bold blue)<%an>'
 	alias = config --get-regexp ^alias\\.
 	ignore = "update-index --assume-unchanged "
 	ignorenot = "update-index --no-assume-unchanged "
